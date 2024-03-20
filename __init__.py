@@ -113,7 +113,7 @@ def enregistrer_oeuvre():
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau client
-    cursor.execute('INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?, ?)', (nom, prenom, "ICI"))
+    cursor.execute('INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)', (nom, prenom, address))
     conn.commit()
     conn.close()
     return redirect('/bibliotheque')  # Rediriger vers la page d'accueil après l'enregistrement
