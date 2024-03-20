@@ -28,6 +28,5 @@ cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('LEF
 
 cur.execute("INSERT INTO emprunt (clientsID, livresID) VALUES (?, ?)",('1', '1'))
 
-
 connection.commit()
 connection.close()
