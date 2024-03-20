@@ -77,7 +77,7 @@ def enregistrer_client():
     conn.close()
     return redirect('/consultation/')  # Rediriger vers la page d'accueil après l'enregistrement
 
-@app.route('/bibliotheque')
+@app.route('/bibliotheque', methods=['GET'])
 def bibliotheque():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
