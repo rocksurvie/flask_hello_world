@@ -79,6 +79,11 @@ def enregistrer_client():
 
 @app.route('/bibliotheque')
 def bibliotheque():
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM clients;')
+    data = cursor.fetchall()
+    conn.close()
     return render_template('bibliotheque.html')  # afficher le formulaire
                                                                                                                                        
 if __name__ == "__main__":
