@@ -78,7 +78,7 @@ def enregistrer_client():
     return redirect('/consultation/')  # Rediriger vers la page d'accueil après l'enregistrement
 
 @app.route('/bibliotheque')
-def formulaire_client():
+def bibliotheque():
     return render_template('bibliotheque.html')  # afficher le formulaire
                                                                                                                                        
 if __name__ == "__main__":
