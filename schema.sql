@@ -12,5 +12,5 @@ CREATE TABLE livres (
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     nom TEXT NOT NULL,
     prenom TEXT NOT NULL,
-    emprunter TEXT NOT NULL
+    emprunter INTEGER NOT NULL
 );
