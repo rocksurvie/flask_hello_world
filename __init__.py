@@ -81,7 +81,10 @@ def enregistrer_client():
 def emprunter_livre():
     emprunter = request.form['emprunter']
     ID = request.form['ID']
-
+    if ID == 0 : 
+        ID = 1
+    else : 
+        ID = 0 
 
     # Connexion à la base de données
     conn = sqlite3.connect('database.db')
