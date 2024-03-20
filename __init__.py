@@ -119,5 +119,23 @@ def enregistrer_oeuvre():
     return redirect('/bibliotheque')  # Rediriger vers la page d'accueil après l'enregistrement
 
 
+
+@app.route('/emprunter_livre', methods=['POST'])
+def Emprunter_livre():
+    emprunter = request.form['emprunter']
+    ID = request.form['ID']
+
+
+    # Connexion à la base de données
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    # Exécution de la requête SQL pour insérer un nouveau client
+    cursor.execute('UPDATE livres SET emprunter= ? WHERE id = ?', emprunter, prenom)
+    conn.commit()
+    conn.close()
+    return redirect('/bibliotheque')  # Rediriger vers la page d'accueil après l'enregistrement
+
+
 if __name__ == "__main__":
   app.run(debug=True)
