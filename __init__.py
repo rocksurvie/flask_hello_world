@@ -89,7 +89,7 @@ def bibliotheque():
 
 
 @app.route('/supprimer_oeuvre', methods=['POST'])
-def enregistrer_client():
+def supprimer_oeuvre():
     ID = request.form['ID']
 
     # Connexion à la base de données
@@ -103,16 +103,17 @@ def enregistrer_client():
     return redirect('/bibliotheque')  
 
 @app.route('/enregistrer_oeuvre', methods=['POST'])
-def enregistrer_client():
+def enregistrer_oeuvre():
     nom = request.form['nom']
     prenom = request.form['prenom']
+    address = request.form['address']
 
     # Connexion à la base de données
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau client
-    cursor.execute('INSERT INTO clients (created, nom, prenom, adresse) VALUES (?, ?, ?, ?)', (1002938, nom, prenom, "ICI"))
+    cursor.execute('INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?, ?)', (nom, prenom, "ICI"))
     conn.commit()
     conn.close()
     return redirect('/consultation/')  # Rediriger vers la page d'accueil après l'enregistrement
