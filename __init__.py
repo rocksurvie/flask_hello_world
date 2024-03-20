@@ -88,10 +88,10 @@ def emprunter_livre():
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau client
-    cursor.execute('UPDATE livres SET emprunter= ? WHERE id = ?', emprunter, ID)
+    cursor.execute('UPDATE livres SET emprunter= ? WHERE id = ?', (emprunter, ID))
     conn.commit()
     conn.close()
-    return redirect('/bibliotheque')  # Rediriger vers la page d'accueil après l'enregistrement
+    return redirect('/bibliotheque') 
 
 
 
