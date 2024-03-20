@@ -127,6 +127,7 @@ def supprimer_oeuvre():
     conn.close()
     return redirect('/bibliotheque')  
 
+
 @app.route('/bibliotheque', methods=['GET'])
 def bibliotheque():
     conn = sqlite3.connect('database.db')

@@ -17,15 +17,17 @@
         {% for row in data %}
         <tr>
             <form action="./emprunter_livre" method="POST">
-                <td type="text" id="ID">{{ row[0] }}</td>
+                <td type="text">{{ row[0] }}</td>
                 <td type="text">{{ row[1] }}</td>
                 <td type="text">{{ row[2] }}</td>
                 <td type="text">{{ row[3] }}</td>
-                <td type="text" id="emprunter">{{ row[4] }}
-                    <button type="submit" class="btn {{ 'rouge' if row[4] == 1 else 'vert' }}">{{ 'Emprunté' if row[4] == 1 else 'Non emprunté' }}</button>
-                </td>
+                <td type="text" id="emprunter">{{ row[4] }}</td>
+                <input type="hidden" name="ID" value="{{ row[0] }}">
+                <input type="hidden" name="emprunter" value="{{ row[4] }}">
+                <td><button type="submit" class="btn {{ 'rouge' if row[4] == 1 else 'vert' }}">{{ 'Emprunté' if row[4] == 1 else 'Non emprunté' }}</button></td>
             </form>
         <form action="./supprimer_oeuvre" method="POST">
+            <input type="hidden" name="ID" value="{{ row[0] }}">
             <td><button type="submit">Supprimer</button></td>
         </form>
 
