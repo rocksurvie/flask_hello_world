@@ -141,8 +141,34 @@ def bibliotheque():
     return render_template('bibliotheque.html', data=data)  # afficher le formulaire
 
 
+@app.route('/authentification_livres', methods=['GET', 'POST'])
+def authentification_livres():
+    if request.method == 'POST':
+        # Vérifier les identifiants
+        if autentifLivre(request.form['username'], request.form['password']): 
+            session['authentifie'] = True
+            # Rediriger vers la route lecture après une authentification réussie
+            return redirect(url_for('bibliotheque'))
+        else:
+            # Afficher un message d'erreur si les identifiants sont incorrects
+            return render_template('formulaire_authentification.html', error=True)
 
+    return render_template('formulaire_authentification.html', error=False)
 
+def autentifLivre(username, password):
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM clients')
+    datas = cursor.fetchall()
+    conn.close()
+    for data in data : 
+        if username in data :
+            if password == data["nom"]+data["prenom"]:
+                return True 
+            else : 
+                return False
+        else : 
+            return False 
 
 
 
