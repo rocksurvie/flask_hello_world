@@ -77,30 +77,24 @@ def enregistrer_client():
     conn.close()
     return redirect('/consultation/')  # Rediriger vers la page d'accueil après l'enregistrement
 
-@app.route('/bibliotheque', methods=['GET'])
-def bibliotheque():
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM livres;')
-    data = cursor.fetchall()
-    conn.close()
-    return render_template('bibliotheque.html', data=data)  # afficher le formulaire
-
-
-
-@app.route('/supprimer_oeuvre', methods=['POST'])
-def supprimer_oeuvre():
+@app.route('/emprunter_livre', methods=['POST'])
+def emprunter_livre():
+    emprunter = request.form['emprunter']
     ID = request.form['ID']
+
 
     # Connexion à la base de données
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau client
-    cursor.execute('DELETE FROM livres WHERE id = ?', ID)
+    cursor.execute('UPDATE livres SET emprunter= ? WHERE id = ?', emprunter, ID)
     conn.commit()
     conn.close()
-    return redirect('/bibliotheque')  
+    return redirect('/bibliotheque')  # Rediriger vers la page d'accueil après l'enregistrement
+
+
+
 
 @app.route('/enregistrer_oeuvre', methods=['POST'])
 def enregistrer_oeuvre():
@@ -119,22 +113,35 @@ def enregistrer_oeuvre():
     return redirect('/bibliotheque')  # Rediriger vers la page d'accueil après l'enregistrement
 
 
-
-@app.route('/emprunter_livre', methods=['POST'])
-def Emprunter_livre():
-    emprunter = request.form['emprunter']
+@app.route('/supprimer_oeuvre', methods=['POST'])
+def supprimer_oeuvre():
     ID = request.form['ID']
-
 
     # Connexion à la base de données
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau client
-    cursor.execute('UPDATE livres SET emprunter= ? WHERE id = ?', emprunter, prenom)
+    cursor.execute('DELETE FROM livres WHERE id = ?', ID)
     conn.commit()
     conn.close()
-    return redirect('/bibliotheque')  # Rediriger vers la page d'accueil après l'enregistrement
+    return redirect('/bibliotheque')  
+
+@app.route('/bibliotheque', methods=['GET'])
+def bibliotheque():
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM livres;')
+    data = cursor.fetchall()
+    conn.close()
+    return render_template('bibliotheque.html', data=data)  # afficher le formulaire
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
