@@ -125,7 +125,7 @@ def supprimer_oeuvre():
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau client
-    cursor.execute('DELETE FROM livres WHERE id = ?', ID)
+    cursor.execute('DELETE FROM livres WHERE id = ?', (ID))
     conn.commit()
     conn.close()
     return redirect('/bibliotheque')  
