@@ -143,6 +143,7 @@ def bibliotheque():
 
 @app.route('/authentification_livres', methods=['GET', 'POST'])
 def authentification_livres():
+    session['authentifie'] = False
     if request.method == 'POST':
         # Vérifier les identifiants
         if autentifLivre(request.form['username'], request.form['password']): 
