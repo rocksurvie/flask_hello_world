@@ -87,5 +87,36 @@ def bibliotheque():
     return render_template('bibliotheque.html', data=data)  # afficher le formulaire
 
 
+
+@app.route('/supprimer_oeuvre', methods=['POST'])
+def enregistrer_client():
+    ID = request.form['ID']
+
+    # Connexion à la base de données
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    # Exécution de la requête SQL pour insérer un nouveau client
+    cursor.execute('DELETE FROM clients WHERE id = ?', ID)
+    conn.commit()
+    conn.close()
+    return redirect('/bibliotheque')  
+
+@app.route('/enregistrer_oeuvre', methods=['POST'])
+def enregistrer_client():
+    nom = request.form['nom']
+    prenom = request.form['prenom']
+
+    # Connexion à la base de données
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    # Exécution de la requête SQL pour insérer un nouveau client
+    cursor.execute('INSERT INTO clients (created, nom, prenom, adresse) VALUES (?, ?, ?, ?)', (1002938, nom, prenom, "ICI"))
+    conn.commit()
+    conn.close()
+    return redirect('/consultation/')  # Rediriger vers la page d'accueil après l'enregistrement
+
+
 if __name__ == "__main__":
   app.run(debug=True)
