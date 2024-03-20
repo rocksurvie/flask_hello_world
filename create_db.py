@@ -16,5 +16,17 @@ cur.execute("INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)",('GAGN
 cur.execute("INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)",('DUBOIS', 'Charlotte', '789, Rue des Roses, 13005 Marseille'))
 cur.execute("INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)",('LEFEVRE', 'Thomas', '333, Rue de la Paix, 75002 Paris'))
 
+cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('LEFEVRE', 'Thomas', ''))
+cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('DUPONT', 'Emilie', ''))
+cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('LEROUX', 'Lucas', ''))
+cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('MARTIN', 'Amandine', ''))
+cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('TREMBLAY', 'Antoine', ''))
+cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('LAMBERT', 'Sarah', ''))
+cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('GAGNON', 'Nicolas', ''))
+cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('DUBOIS', 'Charlotte', ''))
+cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('LEFEVRE', 'Thomas', ''))
+
+
+
 connection.commit()
 connection.close()

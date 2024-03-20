@@ -81,7 +81,7 @@ def enregistrer_client():
 def bibliotheque():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM clients;')
+    cursor.execute('SELECT * FROM livres;')
     data = cursor.fetchall()
     conn.close()
     return render_template('bibliotheque.html', data=data)  # afficher le formulaire
@@ -97,7 +97,7 @@ def supprimer_oeuvre():
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau client
-    cursor.execute('DELETE FROM clients WHERE id = ?', ID)
+    cursor.execute('DELETE FROM livres WHERE id = ?', ID)
     conn.commit()
     conn.close()
     return redirect('/bibliotheque')  
@@ -106,14 +106,14 @@ def supprimer_oeuvre():
 def enregistrer_oeuvre():
     nom = request.form['nom']
     prenom = request.form['prenom']
-    address = request.form['address']
+    emprunter = request.form['emprunter']
 
     # Connexion à la base de données
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau client
-    cursor.execute('INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)', (nom, prenom, address))
+    cursor.execute('INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)', (nom, prenom, emprunter))
     conn.commit()
     conn.close()
     return redirect('/bibliotheque')  # Rediriger vers la page d'accueil après l'enregistrement
