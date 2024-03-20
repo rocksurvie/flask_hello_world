@@ -84,8 +84,8 @@ def bibliotheque():
     cursor.execute('SELECT * FROM clients;')
     data = cursor.fetchall()
     conn.close()
-    return render_template('bibliotheque.html')  # afficher le formulaire
-                      
-                                                                                                                                       
+    return render_template('bibliotheque.html', data=data)  # afficher le formulaire
+
+
 if __name__ == "__main__":
   app.run(debug=True)
