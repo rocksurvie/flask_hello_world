@@ -151,9 +151,9 @@ def authentification_livres():
             return redirect(url_for('bibliotheque'))
         else:
             # Afficher un message d'erreur si les identifiants sont incorrects
-            return render_template('authentification_livres', error=True)
+            return redirect(url_for('authentification_livres'))
 
-    return redirect('authentification_livres')
+    return redirect(url_for('bibliotheque'))
 
 def autentifLivre(username, password):
     conn = sqlite3.connect('database.db')
