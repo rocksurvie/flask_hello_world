@@ -26,7 +26,7 @@ cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('GAG
 cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('DUBOIS', 'Charlotte', '0'))
 cur.execute("INSERT INTO livres (nom, prenom, emprunter) VALUES (?, ?, ?)",('LEFEVRE', 'Thomas', '0'))
 
-cur.execute("INSERT INTO livres (clientsID, livresID) VALUES (?, ?)",('1', '1'))
+cur.execute("INSERT INTO emprunt (clientsID, livresID) VALUES (?, ?)",('1', '1'))
 
 
 connection.commit()
