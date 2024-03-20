@@ -24,16 +24,19 @@
                 <td type="text">{{ row[4] }}</td>
                 <td><button type="submit">Supprimer</button></td>
             </form>
-        </tr>
         {% endfor %}
         <tr>
             <form action="./enregistrer_oeuvre" method="POST">
-                <input type="text" id="nom" name="nom" required><br><br>
-                <input type="text" id="prenom" name="prenom" required><br><br>
-                <input type="text" id="address" name="address" required><br><br>
-                <button type="submit">Enregistrer</button>
+                <td>ID</td>
+                <td>Created</td>
+                <td><input type="text" id="nom" name="nom" required><br><br></td>
+                <td><input type="text" id="prenom" name="prenom" required><br><br></td>
+                <td><input type="text" id="address" name="address" required><br><br></td>
+                <td><button type="submit">Enregistrer</button>
             </form>
         </tr>
+    </tr>
+
     </table>
 </body>
 </html>

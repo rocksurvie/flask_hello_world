@@ -116,7 +116,7 @@ def enregistrer_oeuvre():
     cursor.execute('INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?, ?)', (nom, prenom, "ICI"))
     conn.commit()
     conn.close()
-    return redirect('/consultation/')  # Rediriger vers la page d'accueil après l'enregistrement
+    return redirect('/bibliotheque')  # Rediriger vers la page d'accueil après l'enregistrement
 
 
 if __name__ == "__main__":
